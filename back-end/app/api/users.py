@@ -10,6 +10,7 @@ from app.api.auth import token_auth
 from app.models import User
 from app import db
 
+
 # 用户的增、删(id)、改(id)、查(多个、单个需要id)
 
 @bp.route('/users', methods=['POST'])
@@ -17,7 +18,7 @@ def create_user():
     '''注册一个新用户'''
     data = request.get_json()
     if not data:
-        return bad_request('你需要添加数据')
+        return bad_request('you need add data')
     message = {}
     # 查看传入的数据
     if 'username' not in data or not data.get('username', None):
@@ -33,6 +34,9 @@ def create_user():
         message['username'] = 'please use a different username'
     if User.query.filter_by(email=data.get('email', None)).first():
         message['email'] = 'please use a different email'
+
+    if message:
+        return bad_request(message)
 
     user = User()
     user.from_dict(data, new_user=True)
