@@ -1,10 +1,5 @@
 <template>
   <div class="container">
-    <alert 
-      v-if="sharedState.is_new"
-      v-bind:variant="alertVariant"
-      v-bind:message="alertMessage">
-    </alert>
     <h1>Sign In</h1>
     <div class="row">
       <div class="col-md-4">
@@ -33,19 +28,13 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Alert from './Alert'
 import store from '../store.js'
+
 export default {
   name: 'Login',  //this is the name of the component
-  components: {
-    alert: Alert
-  },
   data () {
     return {
       sharedState: store.state,
-      alertVariant: 'info',
-      alertMessage: 'Congratulations, you are now a registered user !',
       loginForm: {
         username: '',
         password: '',
@@ -60,34 +49,41 @@ export default {
     onSubmit (e) {
       this.loginForm.submitted = true  // 先更新状态
       this.loginForm.errors = 0
+
       if (!this.loginForm.username) {
         this.loginForm.errors++
         this.loginForm.usernameError = 'Username required.'
       } else {
         this.loginForm.usernameError = null
       }
+
       if (!this.loginForm.password) {
         this.loginForm.errors++
         this.loginForm.passwordError = 'Password required.'
       } else {
         this.loginForm.passwordError = null
       }
+
       if (this.loginForm.errors > 0) {
         // 表单验证没通过时，不继续往下执行，即不会通过 axios 调用后端API
         return false
       }
-      const path = 'http://localhost:5000/api/tokens'
+
+      const path = '/tokens'
       // axios 实现Basic Auth需要在config中设置 auth 这个属性即可
-      axios.post(path, {}, {
+      this.$axios.post(path, {}, {
         auth: {
           'username': this.loginForm.username,
           'password': this.loginForm.password
         }
       }).then((response) => {
           // handle success
-          window.localStorage.setItem('madblog-token', response.data.token) 
-          store.resetNotNewAction()
+          window.localStorage.setItem('madblog-token', response.data.token)
           store.loginAction()
+
+          const name = JSON.parse(atob(response.data.token.split('.')[1])).name
+          this.$toasted.success(`Welcome ${name}!`, { icon: 'fingerprint' })
+
           if (typeof this.$route.query.redirect == 'undefined') {
             this.$router.push('/')
           } else {

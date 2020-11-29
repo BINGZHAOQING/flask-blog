@@ -4,7 +4,13 @@
     <list default="true" id="f552dc5b-1e28-45fe-a92e-caaf3c5770bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/tokens.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/tokens.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front-end/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/router/index.js" afterDir="false" />
     </list>
@@ -149,6 +155,7 @@
       <workItem from="1605946613856" duration="24077000" />
       <workItem from="1606138458169" duration="2944000" />
       <workItem from="1606179827979" duration="1866000" />
+      <workItem from="1606633718571" duration="11660000" />
     </task>
     <servers />
   </component>
