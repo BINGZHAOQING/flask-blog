@@ -71,8 +71,8 @@ def get_user(id):
 def update_user(id):
     '''修改一个用户'''
     user = User.query.get_or_404(id)
-
     data = request.get_json()
+    print('---data:', data)
     if not data:
         return bad_request('你需要添加数据')
     message = {}
@@ -93,6 +93,7 @@ def update_user(id):
 
     if message:
         return bad_request(message)
+
     user.from_dict(data, new_user=False)
     db.session.commit()
     return jsonify(user.to_dict())
